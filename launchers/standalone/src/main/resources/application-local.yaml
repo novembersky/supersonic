@@ -7,10 +7,12 @@ spring:
     demo:
       enabled: true
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://bi-test-outside.mysql.rds.aliyuncs.com:6306/selection?serverTimezone=GMT%2B8&characterEncoding=utf8&useSSL=false # springboot2.0多数据源配置使用
+    driver-class-name: org.h2.Driver
+    schema: classpath:db/schema-h2.sql
+    data: classpath:db/data-h2.sql
+    url: jdbc:h2:mem:semantic;DATABASE_TO_UPPER=false
     username: root
-    password: Aa123456
+    password: semantic
 
 server:
   port: 9080
@@ -37,8 +39,8 @@ mybatis:
 
 llm:
   parser:
-    url:  http://127.0.0.1:9092
+    url:  http://120.26.94.83:9092
 embedding:
-  url: http://127.0.0.1:9092
+  url: http://120.26.94.83:9092
 functionCall:
-  url: http://127.0.0.1:9092
+  url: http://120.26.94.83:9092
